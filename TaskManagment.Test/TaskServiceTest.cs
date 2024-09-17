@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskManagment.Enums;
+﻿using TaskManagment.Enums;
 using TaskManagment.Services;
 
 namespace TaskManagment.Test
@@ -32,11 +26,26 @@ namespace TaskManagment.Test
             var taskService = new TaskService();
             var id = taskService.AddTask("TDD");
             //Act
-            taskService.UpdateTask(id,"BDD",TaskStatuses.Canceled);
+            taskService.UpdateTask(id, "BDD", TaskStatuses.Canceled);
             var task = taskService.GetTaskById(id);
             //Assert
             Assert.Equal("BDD", task.Title);
             Assert.Equal(TaskStatuses.Canceled, task.Status);
+        }
+
+        [Fact]
+        public void removetask_should_remove_task_from_list()
+        {
+            // Arrange
+            var taskService = new TaskService();
+            var id = taskService.AddTask("TDD");
+
+            // Act
+            taskService.RemoveTask(id);
+
+            // Assert
+            var task = taskService.GetTaskById(id);
+            Assert.Null(task); 
         }
     }
 }

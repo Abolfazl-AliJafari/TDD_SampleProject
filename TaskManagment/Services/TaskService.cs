@@ -30,7 +30,7 @@ namespace TaskManagment.Services
                 _tasks[taskIndex].Status = status;
             }
         }
-        public void RemoveTask(Entities.Task task)
+        public void RemoveTask(Guid id)
         {
            
         }
@@ -42,7 +42,7 @@ namespace TaskManagment.Services
         {
            return _tasks;
         }
-        public Entities.Task GetTaskById(Guid id)
+        public Entities.Task? GetTaskById(Guid id)
         {
             return _tasks.Where(t => t.ID == id).SingleOrDefault();
         }
