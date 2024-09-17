@@ -10,7 +10,7 @@ namespace TaskManagment.Services
         {
 
         }
-        public void AddTask(string title)
+        public Guid AddTask(string title)
         {
             var task = new Entities.Task()
             {
@@ -19,6 +19,7 @@ namespace TaskManagment.Services
                 Status = TaskStatuses.InProgress
             };
             _tasks.Add(task);
+            return task.ID;
         }
         public void UpdateTask(Guid id,string title,TaskStatuses status)
         {
@@ -35,6 +36,10 @@ namespace TaskManagment.Services
         public List<Entities.Task> GetTaskByStatus(TaskStatuses status)
         {
            return _tasks;
+        }
+        public Entities.Task GetTaskById(Guid id)
+        {
+            return new Entities.Task();
         }
     }
 }
