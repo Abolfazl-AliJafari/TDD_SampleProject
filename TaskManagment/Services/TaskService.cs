@@ -45,7 +45,7 @@ namespace TaskManagment.Services
         }
         public List<Entities.Task> GetTaskByStatus(TaskStatuses status)
         {
-           return _tasks;
+           return _tasks.Where(t => t.Status== status).ToList();
         }
         public Entities.Task? GetTaskById(Guid id)
         {
