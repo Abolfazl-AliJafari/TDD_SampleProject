@@ -25,5 +25,18 @@ namespace TaskManagment.Test
             Assert.Equal(TaskStatuses.InProgress, tasks[0].Status);
         }
 
+        [Fact]
+        public void updatetask_should_update_title_status()
+        {
+            //Arrange
+            var taskService = new TaskService();
+            var id = taskService.AddTask("TDD");
+            //Act
+            taskService.UpdateTask(id,"BDD",TaskStatuses.Canceled);
+            var task = taskService.GetTaskById(id);
+            //Assert
+            Assert.Equal("BDD", task.Title);
+            Assert.Equal(TaskStatuses.Canceled, task.Status);
+        }
     }
 }
