@@ -32,7 +32,7 @@ namespace TaskManagment.Services
         }
         public void RemoveTask(Guid id)
         {
-           
+            _tasks.Remove(GetTaskById(id));
         }
         public List<Entities.Task> GetTasks()
         {
