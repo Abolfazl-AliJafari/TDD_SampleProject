@@ -20,6 +20,10 @@ namespace TaskManagment.Services
             };
             _tasks.Add(task);
         }
+        public void UpdateTask(Guid id,string title,TaskStatuses status)
+        {
+            
+        }
         public void RemoveTask(Entities.Task task)
         {
            
