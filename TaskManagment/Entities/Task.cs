@@ -1,4 +1,6 @@
-﻿namespace TaskManagment.Entities
+﻿using TaskManagment.Enums;
+
+namespace TaskManagment.Entities
 {
     public class Task
     {
@@ -8,6 +10,6 @@
         }
         public Guid ID { get; set; }
         public string Title { get; set; }
-        public TaskStatus Status { get; set; }
+        public TaskStatuses Status { get; set; }
     }
 }
