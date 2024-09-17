@@ -21,7 +21,7 @@ namespace TaskManagment.Test
             //Assert
             var tasks = taskService.GetTasks();
             Assert.Single(tasks);
-            Assert.Equal("TDD", tasks[1].Title);
+            Assert.Equal("TDD", tasks[0].Title);
             Assert.Equal(TaskStatuses.InProgress, tasks[0].Status);
         }
 

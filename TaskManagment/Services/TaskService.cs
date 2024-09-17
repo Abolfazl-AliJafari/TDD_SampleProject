@@ -12,7 +12,13 @@ namespace TaskManagment.Services
         }
         public void AddTask(string title)
         {
-            
+            var task = new Entities.Task()
+            {
+                ID = Guid.NewGuid(),
+                Title = title,
+                Status = TaskStatuses.InProgress
+            };
+            _tasks.Add(task);
         }
         public void RemoveTask(Entities.Task task)
         {
