@@ -23,7 +23,12 @@ namespace TaskManagment.Services
         }
         public void UpdateTask(Guid id,string title,TaskStatuses status)
         {
-            
+            var taskIndex = _tasks.IndexOf(_tasks.Where(t => t.ID == id).SingleOrDefault());
+            if(taskIndex >= 0 )
+            {
+                _tasks[taskIndex].Title = title;
+                _tasks[taskIndex].Status = status;
+            }
         }
         public void RemoveTask(Entities.Task task)
         {
@@ -39,7 +44,7 @@ namespace TaskManagment.Services
         }
         public Entities.Task GetTaskById(Guid id)
         {
-            return new Entities.Task();
+            return _tasks.Where(t => t.ID == id).SingleOrDefault();
         }
     }
 }
