@@ -1,4 +1,5 @@
-﻿using TaskManagment.Entities;
+﻿using System.Threading.Tasks;
+using TaskManagment.Entities;
 using TaskManagment.Enums;
 
 namespace TaskManagment.Services
@@ -32,7 +33,11 @@ namespace TaskManagment.Services
         }
         public void RemoveTask(Guid id)
         {
-            _tasks.Remove(GetTaskById(id));
+            var task = GetTaskById(id);
+            if (task != null)
+            {
+                _tasks.Remove(task);
+            }
         }
         public List<Entities.Task> GetTasks()
         {
